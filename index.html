@@ -1,0 +1,29 @@
+<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8">
+<title>ربط تيك توك</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+ body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0b1020;color:#eef2ff;
+   font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+ .card{background:#141c33;border:1px solid #26314f;border-radius:20px;padding:40px;max-width:560px;text-align:center}
+ h1{font-size:24px;margin:0 0 8px} p{color:#9aa8c9;margin:0 0 22px;font-size:15px}
+ code{display:block;background:#0b1020;border:1px solid #26314f;border-radius:12px;padding:16px;
+   font-size:13px;word-break:break-all;direction:ltr;text-align:left;margin-bottom:18px}
+ button{background:#c9a227;color:#0b1020;border:0;border-radius:12px;padding:13px 30px;
+   font-size:16px;font-weight:700;cursor:pointer;font-family:inherit}
+ .bad{color:#ff8f8f}
+</style>
+<div class="card">
+  <h1 id="t">تم الربط ✅</h1>
+  <p id="s">انسخ الكود وألصقه بالترمنال</p>
+  <code id="c">…</code>
+  <button onclick="navigator.clipboard.writeText(document.getElementById('c').textContent);this.textContent='انتسخ ✓'">انسخ الكود</button>
+</div>
+<script>
+ var q = new URLSearchParams(location.search);
+ var code = q.get('code'), err = q.get('error');
+ if (code) { document.getElementById('c').textContent = decodeURIComponent(code); }
+ else { document.getElementById('t').textContent = 'ما وصل كود ✗';
+        document.getElementById('t').className = 'bad';
+        document.getElementById('s').textContent = err || 'رجّع المحاولة من الترمنال';
+        document.getElementById('c').textContent = location.href; }
+</script>
